@@ -1,0 +1,19 @@
+<div class='recipes'>
+    <h2>My Recipes</h2>
+    <div class= 'recipes-container'>
+        <% @recipes.each do |recipe| %>
+        <%= link_to recipe_path(recipe) do %>
+            <div class='recipe'>
+                <div class='recipe-name'>
+                    <h3><%= recipe.name %></h3>
+                    <button>remove</button>
+                </div>
+                <div class='description'>
+                <p><%=recipe.description%></p>
+                </div>
+            </div>
+            <%end%>
+        <% end %>
+    </div>
+    <%= link_to 'Create New Recipe', new_recipe_path, class: 'recipe-btn' %>
+<div>
