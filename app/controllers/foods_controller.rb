@@ -1,4 +1,5 @@
 class FoodsController < ApplicationController
+  before_action :authenticate_user!
   def index
     @foods = Food.all
   end
@@ -18,6 +19,15 @@ class FoodsController < ApplicationController
       redirect_to foods_path
     else
       render :new
+    end
+  end
+
+  def destroy
+    @food = Food.find(params[:id])
+    if @food.destroy
+      redirect_to foods_path, notice: 'food deleted successfully!'
+    else
+      redirect_to foods_path, alert: 'Error: food could not be deleted'
     end
   end
 
