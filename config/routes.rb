@@ -1,10 +1,14 @@
 Rails.application.routes.draw do
+  devise_for :users
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
 
   # Defines the root path route ("/")
   # root "articles#index"
   root "foods#index"
-  resources :foods,only: [:index, :show, :create, :new]
+  resources :foods,only: [:index, :show, :create, :new,:destroy]
+
+  get '/general_shopping_list', to: 'shopping_lists#index', as: 'general_shopping_list'
+  
   resources :recipes, only: [:index,:show, :destroy, :create, :new] do
     member do
       patch 'toggle_public'
