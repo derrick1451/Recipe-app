@@ -6,14 +6,17 @@
             <div class='recipe'>
                 <div class='recipe-name'>
                     <h4><%= recipe.name %></h4>
-                    <button>remove</button>
+                    <% if can? :destroy, recipe %>
+  <%= link_to 'Remove', recipe_path(recipe),class:'r-btn', method: :delete, data: { turbo_method: :delete, turbo_confirm: 'Are you sure you want to delete this recipe?' } %>
+   <% end %>
                 </div>
                 <div class='description'>
                 <p><%=recipe.description%></p>
                 </div>
             </div>
-            <%end%>
+           
         <% end %>
+         <%end%>
     </div>
     <%= link_to 'Create New Recipe', new_recipe_path, class: 'recipe-btn' %>
 <div>
