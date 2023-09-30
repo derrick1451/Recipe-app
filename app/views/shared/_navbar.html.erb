@@ -1,0 +1,32 @@
+<nav class="navbar">
+    <%= link_to 'Recipe App', root_path, class: 'logo' %>
+    <div class="collapse">
+      <ul class="navbar-nav">
+        <% if user_signed_in? %>
+          <li class="nav-item">
+            <%= link_to 'Public Recipes', public_recipes_path, class: 'nav-link text-white' %>
+          </li>
+          <li class="nav-item">
+            <%= link_to 'Recipe List', recipes_path, class: 'nav-link text-white' %>
+          </li>
+          <li class="nav-item">
+            <%= link_to 'Shopping List', general_shopping_list_path, class: 'nav-link text-white' %>
+          </li>
+        <% end %>
+      </ul>
+      <ul class="navbar-nav">
+        <% if user_signed_in? %>
+          <li class="nav-item">
+            <%= button_to "Log out", destroy_user_session_path,class:'log-out', method: :delete %>
+          </li>
+        <% else %>
+          <li class="nav-item">
+            <%= link_to 'Login', new_user_session_path, class: 'nav-link text-white mr-2' %>
+          </li>
+          <li class="nav-item">
+            <%= link_to "Sign up", new_user_registration_path, class: "nav-link text-white" %>
+          </li>
+        <% end %>
+      </ul>
+    </div>
+</nav>

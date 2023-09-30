@@ -1,0 +1,32 @@
+<div class='login'>
+<h1>Add Recipe</h1>
+<%= form_with model: @recipe, url:recipes_path, method: :post, local: true, scope: :recipe do  |f|%>
+<div class='login-form'>
+<div class="field">
+   <%= f.label :name, 'Recipe Name' %><br>
+   <%= f.text_field :name, class: 'form-control', required: true %>
+</div>
+<div class="field">
+  <%= f.label :preparation_time, 'Preparation Time (minutes)' %><br>
+      <%= f.number_field :preparation_time, class: 'form-control', required: true %>
+</div>
+<div class="field">
+  <%= f.label :cooking_time, 'Cooking Time (minutes)' %><br>
+      <%= f.number_field :cooking_time, class: 'form-control', required: true %>
+</div>
+<div class="field">
+  <%= f.label :description, 'Description' %><br>
+      <%= f.text_area :description, class: 'form-control', rows: 4, required: true %>
+</div>
+<div>
+<%= f.check_box :public, class: 'form-check-input' %>
+      <%= f.label :public, class: 'form-check-label' do %>
+        Public Recipe
+      <% end %>
+</div>
+<div>
+<%= f.submit "Create Recipe",class:'btn' %>
+</div>
+</div>
+<% end %>
+</div>
